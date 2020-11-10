@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Project1</string>
+    <string name="green_player_name">Green Player Name:</string>
+    <string name="white_player_name">"White Player Name: "</string>
+    <string name="start_button">Start Game!</string>
+    <string name="main_activity_title">Checkers</string>
+    <string name="menu_image_description">Checkers board in initial setup</string>
+    <string name="player_name_hint">Player Name</string>
+    <string name="missing_name_error">Player name is required!</string>
+    <string name="duplicate_name_error">Player names must be different!</string>
+    <string name="done">Done</string>
+    <string name="resign">Resign</string>
+    <string name="turn_suffix">\'s Turn!</string>
+    <string name="must_move_message">You must make a move before you end your turn!</string>
+    <string name="game_over_title">Game Over!</string>
+    <string name="game_over_win_suffix">wins!</string>
+    <string name="menu_button">Menu</string>
+    <string name="game_over_lose_suffix">loses!</string>
+    <string name="invalid_move">That\'s an invalid move!</string>
+    <string name="rules_title">How To Play</string>
+    <string name="rules_button">How To Play</string>
+    <string name="rules">Checkers is played by two opponents, on opposite sides of the game board.
+        One player has the green pieces; the other has the white pieces. Players alternate turns.
+        A player may not move an opponent\'s piece. A move consists of moving a piece diagonally to
+        an adjacent unoccupied square. If the adjacent square contains an opponent\'s piece, and
+        the square immediately beyond it is vacant, the piece may be captured (and removed from the
+        game) by jumping over it. Only the dark squares of the checkered board are used. A piece may
+        move only diagonally into an unoccupied square. When presented, capturing is mandatory in
+        most official rules, although some rule variations make capturing optional. The player
+        without pieces remaining, or who cannot move due to being blocked, loses the game.</string>
+</resources>
