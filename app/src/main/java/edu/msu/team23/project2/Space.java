@@ -1,4 +1,4 @@
-package edu.msu.team23.project1;
+package edu.msu.team23.project2;
 
 import java.io.Serializable;
 

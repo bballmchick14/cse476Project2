@@ -30,7 +30,7 @@
 
         <view
             android:id="@+id/checkersView"
-            class="edu.msu.team23.project1.CheckersView"
+            class="edu.msu.team23.project2.CheckersView"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>

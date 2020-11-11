@@ -1,4 +1,4 @@
-package edu.msu.team23.project1;
+package edu.msu.team23.project2;
 
 import android.content.Context;
 import android.graphics.Bitmap;

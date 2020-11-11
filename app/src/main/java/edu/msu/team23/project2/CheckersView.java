@@ -1,4 +1,4 @@
-package edu.msu.team23.project1;
+package edu.msu.team23.project2;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -60,7 +60,7 @@ public class CheckersView extends View {
      */
     private void init(Context context) {
         Intent intent = ((Activity)context).getIntent();
-        checkersGame = new CheckersGame(getContext(), this, intent.getStringExtra(MainActivity.GREEN_PLAYER), intent.getStringExtra(MainActivity.WHITE_PLAYER));
+        checkersGame = new CheckersGame(getContext(), this, intent.getStringExtra(MenuActivity.GREEN_PLAYER), intent.getStringExtra(MenuActivity.WHITE_PLAYER));
     }
 
     @Override

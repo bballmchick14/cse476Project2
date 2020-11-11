@@ -1,4 +1,4 @@
-package edu.msu.team23.project1;
+package edu.msu.team23.project2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -27,7 +27,7 @@ public class GameOverActivity extends AppCompatActivity {
      * Send the application back to the main menu.
      */
     private void backToMenu() {
-        Intent intent= new Intent(this, MainActivity.class);
+        Intent intent= new Intent(this, MenuActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }

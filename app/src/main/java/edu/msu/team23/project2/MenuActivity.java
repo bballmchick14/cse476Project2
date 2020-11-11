@@ -1,4 +1,4 @@
-package edu.msu.team23.project1;
+package edu.msu.team23.project2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,7 +11,7 @@ import android.widget.EditText;
 /**
  * Activity for displaying the main menu.
  */
-public class MainActivity extends AppCompatActivity {
+public class MenuActivity extends AppCompatActivity {
     /**
      * Intent extra key for the green player's name.
      */
