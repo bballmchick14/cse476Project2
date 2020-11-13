@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Project1</string>
+    <string name="app_name">Project2</string>
     <string name="green_player_name">Green Player Name:</string>
     <string name="white_player_name">"White Player Name: "</string>
     <string name="start_button">Start Game!</string>
