@@ -9,13 +9,12 @@ import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
 
 @SuppressWarnings("deprecation")
 public class Cloud {
-    private static final String MAGIC = "";
-    private static final String BASE_URL = "";
+    private static final String MAGIC = "7VpFwBLcKne5p0Uu";
+    private static final String BASE_URL = "https://webdev.cse.msu.edu/~szczerb7/cse476/step6/";
     private static final String SAVE_STATE_PATH = "save-state.php";
     private static final String LOAD_STATE_PATH = "load-state.php";
-    private static final String LOGIN_PATH = "login.php";
+    private static final String LOGIN_PATH = "login-user.php";
     private static final String CREATE_USER_PATH = "create-user.php";
-    private static final String SEARCH_PATH = "search.php";
     private static final String CONNECT_PATH = "connect.php";
     private static final String DISCONNECT_PATH = "disconnect.php";
     private static final String UTF8 = "UTF-8";
@@ -62,16 +61,6 @@ public class Cloud {
      * @return Result of the create user call
      */
     public CheckersResult createUser(String userName, String password) {
-        return new CheckersResult();
-    }
-
-    /**
-     * Begin the search for a new game.
-     * @param userName Username of the client
-     * @param password Password for the logged in user
-     * @return Result of the search call
-     */
-    public CheckersResult search(String userName, String password) {
         return new CheckersResult();
     }
 
