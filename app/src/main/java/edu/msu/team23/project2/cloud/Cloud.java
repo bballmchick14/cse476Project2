@@ -11,12 +11,12 @@ import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
 public class Cloud {
     private static final String MAGIC = "7VpFwBLcKne5p0Uu";
     private static final String BASE_URL = "https://webdev.cse.msu.edu/~szczerb7/cse476/step6/";
-    private static final String SAVE_STATE_PATH = "save-state.php";
-    private static final String LOAD_STATE_PATH = "load-state.php";
-    private static final String LOGIN_PATH = "login-user.php";
-    private static final String CREATE_USER_PATH = "create-user.php";
-    private static final String CONNECT_PATH = "connect.php";
-    private static final String DISCONNECT_PATH = "disconnect.php";
+    public static final String SAVE_STATE_PATH = "save-state.php";
+    public static final String LOAD_STATE_PATH = "load-state.php";
+    public static final String LOGIN_USER_PATH = "login-user.php";
+    public static final String CREATE_USER_PATH = "create-user.php";
+    public static final String CONNECT_PATH = "connect.php";
+    public static final String DISCONNECT_PATH = "disconnect.php";
     private static final String UTF8 = "UTF-8";
 
     private static Retrofit retrofit = new Retrofit.Builder()
