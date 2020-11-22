@@ -28,4 +28,5 @@
         move only diagonally into an unoccupied square. When presented, capturing is mandatory in
         most official rules, although some rule variations make capturing optional. The player
         without pieces remaining, or who cannot move due to being blocked, loses the game.</string>
+    <string name="logged_in_user_label">Logged in user:</string>
 </resources>

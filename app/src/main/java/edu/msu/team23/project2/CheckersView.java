@@ -60,7 +60,7 @@ public class CheckersView extends View {
      */
     private void init(Context context) {
         Intent intent = ((Activity)context).getIntent();
-        checkersGame = new CheckersGame(getContext(), this, intent.getStringExtra(MenuActivity.GREEN_PLAYER), intent.getStringExtra(MenuActivity.WHITE_PLAYER));
+        checkersGame = new CheckersGame(getContext(), this, "Temp1", "Temp2");
     }
 
     @Override
