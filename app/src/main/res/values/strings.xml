@@ -3,7 +3,7 @@
     <string name="green_player_name">Green Player Name:</string>
     <string name="white_player_name">"White Player Name: "</string>
     <string name="start_button">Start Game!</string>
-    <string name="main_activity_title">Checkers</string>
+    <string name="game_title">Checkers</string>
     <string name="menu_image_description">Checkers board in initial setup</string>
     <string name="player_name_hint">Player Name</string>
     <string name="missing_name_error">Player name is required!</string>
@@ -29,4 +29,12 @@
         most official rules, although some rule variations make capturing optional. The player
         without pieces remaining, or who cannot move due to being blocked, loses the game.</string>
     <string name="logged_in_user_label">Logged in user:</string>
+    <string name="log_in_button">Log In</string>
+    <string name="user_username_label">Username:</string>
+    <string name="user_password_label">Password:</string>
+    <string name="log_in_title">Log In</string>
+    <string name="green_piece_image_description">Green checkers man piece</string>
+    <string name="white_piece_image_description">White checkers man piece</string>
+    <string name="create_user_title">Create User</string>
+    <string name="create_user_button">Create User</string>
 </resources>

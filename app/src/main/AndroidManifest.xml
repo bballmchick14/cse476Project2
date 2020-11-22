@@ -10,11 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".CreateUserActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".MenuActivity" />
         <activity android:name=".GameOverActivity" />
         <activity android:name=".CheckersActivity" />
         <activity
-            android:name=".MenuActivity"
+            android:name=".LoginActivity"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

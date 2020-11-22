@@ -13,7 +13,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/main_activity_title"
+        android:text="@string/game_title"
         android:textSize="50sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,6 +38,7 @@
             app:srcCompat="@drawable/menu_image" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/controlsLayout"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1">
