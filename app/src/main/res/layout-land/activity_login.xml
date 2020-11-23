@@ -68,6 +68,7 @@
                     android:id="@+id/loginUsernameLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:labelFor="@id/loginUsername"
                     android:text="@string/user_username_label" />
 
                 <EditText
@@ -75,7 +76,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:importantForAutofill="no" />
             </LinearLayout>
 
             <LinearLayout
@@ -83,7 +85,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintBottom_toTopOf="@+id/createUserButton"
+                app:layout_constraintBottom_toTopOf="@+id/loginButtonLayout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -93,6 +95,7 @@
                     android:id="@+id/loginPasswordLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:labelFor="@id/loginPassword"
                     android:text="@string/user_password_label" />
 
                 <EditText
@@ -100,19 +103,38 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:importantForAutofill="no"
                     android:inputType="textPassword" />
             </LinearLayout>
 
-            <Button
-                android:id="@+id/createUserButton"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/loginButtonLayout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/log_in_button"
+                android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/passwordEntryLayout" />
+                app:layout_constraintTop_toBottomOf="@+id/passwordEntryLayout"
+                tools:layout_editor_absoluteX="0dp">
+
+                <Button
+                    android:id="@+id/loginButton"
+                    style="@style/Widget.AppCompat.Button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="onLogin"
+                    android:text="@string/log_in_button" />
+
+                <Button
+                    android:id="@+id/loginCreateUserButton"
+                    style="@style/Widget.AppCompat.Button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="onCreateUser"
+                    android:text="@string/create_user_button" />
+            </LinearLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 

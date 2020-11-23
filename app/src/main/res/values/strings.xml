@@ -6,8 +6,6 @@
     <string name="game_title">Checkers</string>
     <string name="menu_image_description">Checkers board in initial setup</string>
     <string name="player_name_hint">Player Name</string>
-    <string name="missing_name_error">Player name is required!</string>
-    <string name="duplicate_name_error">Player names must be different!</string>
     <string name="done">Done</string>
     <string name="resign">Resign</string>
     <string name="turn_suffix">\'s Turn!</string>
@@ -37,4 +35,8 @@
     <string name="white_piece_image_description">White checkers man piece</string>
     <string name="create_user_title">Create User</string>
     <string name="create_user_button">Create User</string>
+    <string name="invalid_username_length_error">Username must be 1-32 characters!</string>
+    <string name="invalid_password_length_error">Password must be 1-16 characters!</string>
+    <string name="user_error">That user does not exists!</string>
+    <string name="password_error">Invalid password!</string>
 </resources>
