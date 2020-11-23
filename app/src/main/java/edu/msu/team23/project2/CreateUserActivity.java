@@ -6,19 +6,28 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 import edu.msu.team23.project2.cloud.Cloud;
+import edu.msu.team23.project2.cloud.DatabaseConstants;
 import edu.msu.team23.project2.cloud.models.CheckersResult;
 
 public class CreateUserActivity extends AppCompatActivity {
     public static final String USERNAME = "CreateUserActivity.username";
     public static final String PASSWORD = "CreateUserActivity.password";
+    public static final String REMEMBER = "CreateUserActivity.remember";
+
+    private UserService userService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_user);
+
+        userService = new UserService(this,
+                0, DatabaseConstants.MAX_USERNAME_LENGTH,
+                0, DatabaseConstants.MAX_PASSWORD_LENGTH);
     }
 
     /**
@@ -30,7 +39,7 @@ public class CreateUserActivity extends AppCompatActivity {
         final EditText passwordField = findViewById(R.id.loginPassword);
 
         // Only attempt a login if the input is valid
-        if (UserCredentialFormatService.areFieldsValid(this, usernameField, passwordField)) {
+        if (userService.areFieldsValid(usernameField, passwordField)) {
             // Activity thread is in
             final CreateUserActivity activity = this;
 
@@ -49,6 +58,7 @@ public class CreateUserActivity extends AppCompatActivity {
                                 Intent result = new Intent();
                                 result.putExtra(USERNAME, usernameField.getText().toString());
                                 result.putExtra(PASSWORD, passwordField.getText().toString());
+                                result.putExtra(REMEMBER, getRememberCheckBox().isChecked());
                                 setResult(Activity.RESULT_OK, result);
                                 finish();
                             }
@@ -67,5 +77,29 @@ public class CreateUserActivity extends AppCompatActivity {
                 }
             }).start();
         }
+    }
+
+    /**
+     * Get the remember check box.
+     * @return The remember check box
+     */
+    private CheckBox getRememberCheckBox() {
+        return findViewById(R.id.createRemeberCheckbox);
+    }
+
+    /**
+     * Get the username field.
+     * @return The username field
+     */
+    private EditText getUsernameField() {
+        return findViewById(R.id.loginUsername);
+    }
+
+    /**
+     * Get the password field.
+     * @return The password field
+     */
+    private EditText getPasswordField() {
+        return findViewById(R.id.loginPassword);
     }
 }

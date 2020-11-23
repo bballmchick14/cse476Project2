@@ -7,9 +7,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 import edu.msu.team23.project2.cloud.Cloud;
+import edu.msu.team23.project2.cloud.DatabaseConstants;
 import edu.msu.team23.project2.cloud.models.CheckersResult;
 
 public class LoginActivity extends AppCompatActivity {
@@ -17,10 +19,22 @@ public class LoginActivity extends AppCompatActivity {
     public static final String PASSWORD = "LoginActivity.password";
     private static final int CREATE_USER = 1;
 
+    private UserService userService;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        userService = new UserService(this,
+                0, DatabaseConstants.MAX_USERNAME_LENGTH,
+                0, DatabaseConstants.MAX_PASSWORD_LENGTH);
+
+        if (userService.isRemembered()) {
+            getRememberCheckBox().setChecked(true);
+            getUsernameField().setText(userService.getRememberedUsername());
+            getPasswordField().setText(userService.getRememberedPassword());
+        }
     }
 
     /**
@@ -28,11 +42,11 @@ public class LoginActivity extends AppCompatActivity {
      * @param view View the event came from
      */
     public void onLogin(View view) {
-        final EditText usernameField = findViewById(R.id.loginUsername);
-        final EditText passwordField = findViewById(R.id.loginPassword);
+        final EditText usernameField = getUsernameField();
+        final EditText passwordField = getPasswordField();
 
         // Only attempt a login if the input is valid
-        if (UserCredentialFormatService.areFieldsValid(this, usernameField, passwordField)) {
+        if (userService.areFieldsValid(usernameField, passwordField)) {
             // Activity thread is in
             final LoginActivity activity = this;
 
@@ -48,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                startMenuActivity(activity, usernameField.getText().toString(), passwordField.getText().toString());
+                                startMenuActivity(activity, usernameField.getText().toString(), passwordField.getText().toString(), getRememberCheckBox().isChecked());
                             }
                         });
                     } else {
@@ -86,11 +100,11 @@ public class LoginActivity extends AppCompatActivity {
                 startMenuActivity(
                         this,
                         data.getStringExtra(CreateUserActivity.USERNAME),
-                        data.getStringExtra(CreateUserActivity.PASSWORD)
+                        data.getStringExtra(CreateUserActivity.PASSWORD),
+                        data.getBooleanExtra(CreateUserActivity.REMEMBER, false)
                 );
             }
         }
-
     }
 
     /**
@@ -99,10 +113,40 @@ public class LoginActivity extends AppCompatActivity {
      * @param username User's username
      * @param password User's password
      */
-    public void startMenuActivity(LoginActivity activity, String username, String password) {
+    private void startMenuActivity(LoginActivity activity, String username, String password, boolean remember) {
+        if(remember) {
+            userService.setRemember(username, password);
+        } else {
+            userService.clearRemember();
+        }
+
         Intent intent = new Intent(activity, MenuActivity.class);
         intent.putExtra(USERNAME, username);
         intent.putExtra(PASSWORD, password);
         startActivity(intent);
+    }
+
+    /**
+     * Get the remember check box.
+     * @return The remember check box
+     */
+    private CheckBox getRememberCheckBox() {
+        return findViewById(R.id.rememberCheckBox);
+    }
+
+    /**
+     * Get the username field.
+     * @return The username field
+     */
+    private EditText getUsernameField() {
+        return findViewById(R.id.loginUsername);
+    }
+
+    /**
+     * Get the password field.
+     * @return The password field
+     */
+    private EditText getPasswordField() {
+        return findViewById(R.id.loginPassword);
     }
 }

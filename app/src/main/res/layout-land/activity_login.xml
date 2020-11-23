@@ -76,8 +76,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="textPersonName"
-                    android:importantForAutofill="no" />
+                    android:importantForAutofill="no"
+                    android:inputType="textPersonName" />
             </LinearLayout>
 
             <LinearLayout
@@ -85,7 +85,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintBottom_toTopOf="@+id/loginButtonLayout"
+                app:layout_constraintBottom_toTopOf="@+id/rememberCheckBox"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -113,8 +113,9 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/passwordEntryLayout"
-                tools:layout_editor_absoluteX="0dp">
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rememberCheckBox">
 
                 <Button
                     android:id="@+id/loginButton"
@@ -134,6 +135,15 @@
                     android:onClick="onCreateUser"
                     android:text="@string/create_user_button" />
             </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/rememberCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/remember_label"
+                app:layout_constraintBottom_toTopOf="@+id/loginButtonLayout"
+                app:layout_constraintStart_toStartOf="@+id/passwordEntryLayout"
+                app:layout_constraintTop_toBottomOf="@+id/passwordEntryLayout" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
