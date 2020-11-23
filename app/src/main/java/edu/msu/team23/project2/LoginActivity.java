@@ -1,7 +1,9 @@
 package edu.msu.team23.project2;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,10 +13,9 @@ import edu.msu.team23.project2.cloud.Cloud;
 import edu.msu.team23.project2.cloud.models.CheckersResult;
 
 public class LoginActivity extends AppCompatActivity {
-    private static final int MAX_USERNAME_LENGTH = 32;
-    private static final int MAX_PASSWORD_LENGTH = 16;
     public static final String USERNAME = "LoginActivity.username";
     public static final String PASSWORD = "LoginActivity.password";
+    private static final int CREATE_USER = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
         final EditText passwordField = findViewById(R.id.loginPassword);
 
         // Only attempt a login if the input is valid
-        if (areFieldsValid(usernameField, passwordField)) {
+        if (UserCredentialFormatService.areFieldsValid(this, usernameField, passwordField)) {
             // Activity thread is in
             final LoginActivity activity = this;
 
@@ -47,10 +48,7 @@ public class LoginActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Intent intent = new Intent(activity, MenuActivity.class);
-                                intent.putExtra(USERNAME, usernameField.getText().toString());
-                                intent.putExtra(PASSWORD, passwordField.getText().toString());
-                                startActivity(intent);
+                                startMenuActivity(activity, usernameField.getText().toString(), passwordField.getText().toString());
                             }
                         });
                     } else {
@@ -61,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
                                 if (result != null && result.getMessage().equals(Cloud.PASSWORD_ERROR)) {
                                     passwordField.setError(getResources().getString(R.string.password_error));
                                 } else {
-                                    usernameField.setError(getResources().getString(R.string.user_error));
+                                    usernameField.setError(getResources().getString(R.string.nonexistent_user_error));
                                 }
                             }
                         });
@@ -76,32 +74,35 @@ public class LoginActivity extends AppCompatActivity {
      * @param view View the event came from
      */
     public void onCreateUser(View view) {
-        // TODO
+        Intent intent = new Intent(this, CreateUserActivity.class);
+        startActivityForResult(intent, CREATE_USER);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (data != null) {
+            if(requestCode == CREATE_USER && resultCode == Activity.RESULT_OK) {
+                startMenuActivity(
+                        this,
+                        data.getStringExtra(CreateUserActivity.USERNAME),
+                        data.getStringExtra(CreateUserActivity.PASSWORD)
+                );
+            }
+        }
+
     }
 
     /**
-     * Are the username and password fields in the correct format?
-     * @return Are the username and password fields in the correct format?
+     * Start the menu activity
+     * @param activity Activity starting from
+     * @param username User's username
+     * @param password User's password
      */
-    private boolean areFieldsValid(EditText usernameField, EditText passwordField) {
-        boolean areFieldsValid = true;
-
-        if (usernameField != null && passwordField != null) {
-            String username = usernameField.getText().toString();
-            String password = passwordField.getText().toString();
-
-            if (password.length() < 1 || password.length() > MAX_PASSWORD_LENGTH) {
-                areFieldsValid = false;
-                passwordField.setError(getResources().getString(R.string.invalid_password_length_error));
-            }
-            if (username.length() < 1 || username.length() > MAX_USERNAME_LENGTH) {
-                areFieldsValid = false;
-                usernameField.setError(getResources().getString(R.string.invalid_username_length_error));
-            }
-        } else {
-            areFieldsValid = false;
-        }
-
-        return areFieldsValid;
+    public void startMenuActivity(LoginActivity activity, String username, String password) {
+        Intent intent = new Intent(activity, MenuActivity.class);
+        intent.putExtra(USERNAME, username);
+        intent.putExtra(PASSWORD, password);
+        startActivity(intent);
     }
 }

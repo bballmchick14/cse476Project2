@@ -25,6 +25,7 @@ public class Cloud {
     public static final String STATUS_FAILURE = "failure";
     public static final String USER_ERROR = "user error";
     public static final String PASSWORD_ERROR = "password error";
+    public static final String NAME_TAKEN_ERROR = "name taken";
 
     private static Retrofit retrofit = new Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -77,7 +78,16 @@ public class Cloud {
      * @return Result of the create user call
      */
     public CheckersResult createUser(String username, String password) {
-        return new CheckersResult();
+        CheckersService service = retrofit.create(CheckersService.class);
+        try {
+            Response<CheckersResult> response = service.createUser(username, MAGIC, password).execute();
+            if (!response.isSuccessful()) {
+                return null;
+            }
+            return response.body();
+        } catch(IOException | RuntimeException e) {
+            return null;
+        }
     }
 
     /**

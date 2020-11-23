@@ -37,6 +37,7 @@
     <string name="create_user_button">Create User</string>
     <string name="invalid_username_length_error">Username must be 1-32 characters!</string>
     <string name="invalid_password_length_error">Password must be 1-16 characters!</string>
-    <string name="user_error">That user does not exists!</string>
+    <string name="nonexistent_user_error">That user does not exists!</string>
     <string name="password_error">Invalid password!</string>
+    <string name="taken_username_error">That username is already taken!</string>
 </resources>
