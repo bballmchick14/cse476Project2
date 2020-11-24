@@ -14,10 +14,10 @@ public class UserService {
     private static final String REMEMBERED_EMPTY = "";
 
     private final SharedPreferences preferences;
-    private int minUsernameLength;
-    private int maxUsernameLength;
-    private int minPasswordLength;
-    private int maxPasswordLength;
+    private final int  minUsernameLength;
+    private final int maxUsernameLength;
+    private final int minPasswordLength;
+    private final int maxPasswordLength;
     private final String invalidUsernameLengthError;
     private final String invalidPasswordLengthError;
 

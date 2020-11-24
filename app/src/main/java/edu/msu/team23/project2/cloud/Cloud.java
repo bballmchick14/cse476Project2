@@ -20,14 +20,11 @@ public class Cloud {
     public static final String CREATE_USER_PATH = "create-user.php";
     public static final String CONNECT_PATH = "connect.php";
     public static final String DISCONNECT_PATH = "disconnect.php";
-    private static final String UTF8 = "UTF-8";
     public static final String STATUS_SUCCESS = "success";
-    public static final String STATUS_FAILURE = "failure";
-    public static final String USER_ERROR = "user error";
     public static final String PASSWORD_ERROR = "password error";
     public static final String NAME_TAKEN_ERROR = "name taken";
 
-    private static Retrofit retrofit = new Retrofit.Builder()
+    private static final Retrofit retrofit = new Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(SimpleXmlConverterFactory.create())
             .build();

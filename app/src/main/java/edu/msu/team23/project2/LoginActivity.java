@@ -27,8 +27,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         userService = new UserService(this,
-                0, DatabaseConstants.MAX_USERNAME_LENGTH,
-                0, DatabaseConstants.MAX_PASSWORD_LENGTH);
+                1, DatabaseConstants.MAX_USERNAME_LENGTH,
+                1, DatabaseConstants.MAX_PASSWORD_LENGTH);
 
         if (userService.isRemembered()) {
             getRememberCheckBox().setChecked(true);

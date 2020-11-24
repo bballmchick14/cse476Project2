@@ -1,133 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/createUserActivityLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="25dp"
+    android:baselineAligned="false"
+    android:paddingStart="25dp"
+    android:paddingEnd="5dp"
     tools:context="edu.msu.team23.project2.LoginActivity">
 
-    <TextView
-        android:id="@+id/createUserActivityTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/game_title"
-        android:textSize="36sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <LinearLayout
-        android:id="@+id/dividerLayout"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createUserActivityTitle">
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:paddingTop="25dp"
+        android:paddingBottom="25dp">
+
+        <TextView
+            android:id="@+id/createUserActivityTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/game_title"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/checkersPieceImage"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_gravity="center"
-            android:layout_weight="1"
             android:contentDescription="@string/white_piece_image_description"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/createUserActivityTitle"
             app:srcCompat="@drawable/white_man" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/createUserTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/create_user_title"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/usernameEntryLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/usernameEntryLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/passwordEntryLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/createUserTitle">
 
             <TextView
-                android:id="@+id/createUserTitle"
+                android:id="@+id/loginUsernameLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/create_user_title"
-                android:textSize="30sp"
-                app:layout_constraintBottom_toTopOf="@+id/usernameEntryLayout"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:labelFor="@id/loginUsername"
+                android:text="@string/user_username_label" />
 
-            <LinearLayout
-                android:id="@+id/usernameEntryLayout"
+            <EditText
+                android:id="@+id/loginUsername"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toTopOf="@+id/passwordEntryLayout"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/createUserTitle">
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName" />
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/loginUsernameLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:labelFor="@id/loginUsername"
-                    android:text="@string/user_username_label" />
+        <LinearLayout
+            android:id="@+id/passwordEntryLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/createRememberCheckbox"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/usernameEntryLayout">
 
-                <EditText
-                    android:id="@+id/loginUsername"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:importantForAutofill="no"
-                    android:inputType="textPersonName" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/passwordEntryLayout"
+            <TextView
+                android:id="@+id/loginPasswordLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toTopOf="@+id/createRememberCheckBox"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/usernameEntryLayout">
+                android:labelFor="@id/loginPassword"
+                android:text="@string/user_password_label" />
 
-                <TextView
-                    android:id="@+id/loginPasswordLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:labelFor="@id/loginPassword"
-                    android:text="@string/user_password_label" />
-
-                <EditText
-                    android:id="@+id/loginPassword"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:importantForAutofill="no"
-                    android:inputType="textPassword" />
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/createUserButton"
+            <EditText
+                android:id="@+id/loginPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="onCreateUser"
-                android:text="@string/create_user_button"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/createRememberCheckBox" />
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:inputType="textPassword" />
+        </LinearLayout>
 
-            <CheckBox
-                android:id="@+id/createRememberCheckBox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/remember_label"
-                app:layout_constraintBottom_toTopOf="@+id/createUserButton"
-                app:layout_constraintStart_toStartOf="@+id/passwordEntryLayout"
-                app:layout_constraintTop_toBottomOf="@+id/passwordEntryLayout" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </LinearLayout>
+        <Button
+            android:id="@+id/createUserButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onCreateUser"
+            android:text="@string/create_user_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/createRememberCheckbox" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <CheckBox
+            android:id="@+id/createRememberCheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/remember_label"
+            app:layout_constraintBottom_toTopOf="@+id/createUserButton"
+            app:layout_constraintStart_toStartOf="@+id/passwordEntryLayout"
+            app:layout_constraintTop_toBottomOf="@+id/passwordEntryLayout" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -85,7 +85,6 @@
                 android:id="@+id/loggedInUser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="username"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/rulesButton"
                 app:layout_constraintEnd_toEndOf="parent"

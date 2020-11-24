@@ -5,7 +5,8 @@
     android:id="@+id/createUserActivityLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="25dp"
+    android:paddingStart="25dp"
+    android:paddingEnd="25dp"
     tools:context="edu.msu.team23.project2.LoginActivity">
 
     <TextView

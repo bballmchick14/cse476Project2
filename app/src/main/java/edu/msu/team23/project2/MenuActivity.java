@@ -3,17 +3,27 @@ package edu.msu.team23.project2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Activity for displaying the main menu.
  */
 public class MenuActivity extends AppCompatActivity {
+    private String username;
+    private String password;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+        Intent intent = getIntent();
+        username = intent.getStringExtra(LoginActivity.USERNAME);
+        password = intent.getStringExtra(LoginActivity.PASSWORD);
+        getLoggedInUser().setText(String.format("  %s", username));
     }
 
     /**
@@ -24,6 +34,7 @@ public class MenuActivity extends AppCompatActivity {
         /*
          * Functionality needs to be changed for multi-player
          */
+        Toast.makeText(view.getContext(), R.string.feature_not_implemented, Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -43,5 +54,9 @@ public class MenuActivity extends AppCompatActivity {
         // Create the dialog box and show it
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
+    }
+
+    public TextView getLoggedInUser() {
+        return findViewById(R.id.loggedInUser);
     }
 }

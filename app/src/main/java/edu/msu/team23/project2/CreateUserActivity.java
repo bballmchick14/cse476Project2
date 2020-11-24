@@ -26,8 +26,8 @@ public class CreateUserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_user);
 
         userService = new UserService(this,
-                0, DatabaseConstants.MAX_USERNAME_LENGTH,
-                0, DatabaseConstants.MAX_PASSWORD_LENGTH);
+                1, DatabaseConstants.MAX_USERNAME_LENGTH,
+                1, DatabaseConstants.MAX_PASSWORD_LENGTH);
     }
 
     /**
@@ -84,22 +84,6 @@ public class CreateUserActivity extends AppCompatActivity {
      * @return The remember check box
      */
     private CheckBox getRememberCheckBox() {
-        return findViewById(R.id.createRemeberCheckbox);
-    }
-
-    /**
-     * Get the username field.
-     * @return The username field
-     */
-    private EditText getUsernameField() {
-        return findViewById(R.id.loginUsername);
-    }
-
-    /**
-     * Get the password field.
-     * @return The password field
-     */
-    private EditText getPasswordField() {
-        return findViewById(R.id.loginPassword);
+        return findViewById(R.id.createRememberCheckbox);
     }
 }
