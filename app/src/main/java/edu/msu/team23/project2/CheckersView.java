@@ -119,12 +119,4 @@ public class CheckersView extends View {
     public void onResign() {
         checkersGame.handleResign();
     }
-
-    /**
-     * Get the checkers game associated with this view.
-     * @return The checkers game associated with this view
-     */
-    public CheckersGame getCheckersGame() {
-        return checkersGame;
-    }
 }

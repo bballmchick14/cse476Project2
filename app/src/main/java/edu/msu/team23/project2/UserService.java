@@ -107,6 +107,10 @@ public class UserService {
         boolean areFieldsValid = true;
 
         if (usernameField != null && passwordField != null) {
+            // Clear previous errors
+            usernameField.setError(null);
+            passwordField.setError(null);
+
             // Get the strings in the username and password fields
             String username = usernameField.getText().toString();
             String password = passwordField.getText().toString();

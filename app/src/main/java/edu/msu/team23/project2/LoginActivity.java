@@ -48,12 +48,7 @@ public class LoginActivity extends AppCompatActivity {
                 1, DatabaseConstants.MAX_USERNAME_LENGTH,
                 1, DatabaseConstants.MAX_PASSWORD_LENGTH);
 
-        // If there's a remembered user, fill the fields with that information
-        if (userService.isRemembered()) {
-            getRememberCheckBox().setChecked(true);
-            getUsernameField().setText(userService.getRememberedUsername());
-            getPasswordField().setText(userService.getRememberedPassword());
-        }
+        fillRemembered();
     }
 
     /**
@@ -125,7 +120,8 @@ public class LoginActivity extends AppCompatActivity {
                         this,
                         data.getStringExtra(CreateUserActivity.USERNAME),
                         data.getStringExtra(CreateUserActivity.PASSWORD),
-                        data.getBooleanExtra(CreateUserActivity.REMEMBER, false)
+                        data.getBooleanExtra(CreateUserActivity.REMEMBER,
+                        false)
                 );
             }
         }
@@ -145,11 +141,33 @@ public class LoginActivity extends AppCompatActivity {
             userService.clearRemember();
         }
 
+        // Remove errors from the errors from the EditTexts on the login activity
+        getUsernameField().setError(null);
+        getPasswordField().setError(null);
+
+        // Set the fields to their remembered state
+        fillRemembered();
+
         // Start the menu activity passing through the user's name and password
         Intent intent = new Intent(activity, MenuActivity.class);
         intent.putExtra(USERNAME, username);
         intent.putExtra(PASSWORD, password);
         startActivity(intent);
+    }
+
+    /**
+     * Fill the username, password, and remembered fields with remembered data.
+     */
+    private void fillRemembered() {
+        if (userService.isRemembered()) {
+            getRememberCheckBox().setChecked(true);
+            getUsernameField().setText(userService.getRememberedUsername());
+            getPasswordField().setText(userService.getRememberedPassword());
+        } else {
+            getRememberCheckBox().setChecked(false);
+            getUsernameField().setText("");
+            getPasswordField().setText("");
+        }
     }
 
     /**
