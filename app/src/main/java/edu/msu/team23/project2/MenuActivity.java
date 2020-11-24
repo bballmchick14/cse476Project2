@@ -13,7 +13,14 @@ import android.widget.Toast;
  * Activity for displaying the main menu.
  */
 public class MenuActivity extends AppCompatActivity {
+    /**
+     * Logged in user's username.
+     */
     private String username;
+
+    /**
+     * Logged in user's password.
+     */
     private String password;
 
     @Override
@@ -31,9 +38,7 @@ public class MenuActivity extends AppCompatActivity {
      * @param view View the event happened on
      */
     public void onStartGame(View view) {
-        /*
-         * Functionality needs to be changed for multi-player
-         */
+        //Functionality needs to be changed for multi-player
         Toast.makeText(view.getContext(), R.string.feature_not_implemented, Toast.LENGTH_SHORT).show();
     }
 
@@ -56,6 +61,10 @@ public class MenuActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
+    /**
+     * Get the field for the logged in user.
+     * @return The field for the logged in user
+     */
     public TextView getLoggedInUser() {
         return findViewById(R.id.loggedInUser);
     }

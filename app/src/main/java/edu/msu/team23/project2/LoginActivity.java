@@ -14,11 +14,28 @@ import edu.msu.team23.project2.cloud.Cloud;
 import edu.msu.team23.project2.cloud.DatabaseConstants;
 import edu.msu.team23.project2.cloud.models.CheckersResult;
 
+/**
+ * Activity for handling logging into the application.
+ */
 public class LoginActivity extends AppCompatActivity {
+    /**
+     * Key for the user's name.
+     */
     public static final String USERNAME = "LoginActivity.username";
+
+    /**
+     * Key for the user's password.
+     */
     public static final String PASSWORD = "LoginActivity.password";
+
+    /**
+     * Response code for creating a user.
+     */
     private static final int CREATE_USER = 1;
 
+    /**
+     * Service for handling and saving the user's credentials.
+     */
     private UserService userService;
 
     @Override
@@ -26,10 +43,12 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        // Create the user service
         userService = new UserService(this,
                 1, DatabaseConstants.MAX_USERNAME_LENGTH,
                 1, DatabaseConstants.MAX_PASSWORD_LENGTH);
 
+        // If there's a remembered user, fill the fields with that information
         if (userService.isRemembered()) {
             getRememberCheckBox().setChecked(true);
             getUsernameField().setText(userService.getRememberedUsername());
@@ -42,6 +61,7 @@ public class LoginActivity extends AppCompatActivity {
      * @param view View the event came from
      */
     public void onLogin(View view) {
+        // Get the fields for the username and password
         final EditText usernameField = getUsernameField();
         final EditText passwordField = getPasswordField();
 
@@ -50,6 +70,7 @@ public class LoginActivity extends AppCompatActivity {
             // Activity thread is in
             final LoginActivity activity = this;
 
+            // Start a thread to log in out of the UI thread
             new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -88,6 +109,7 @@ public class LoginActivity extends AppCompatActivity {
      * @param view View the event came from
      */
     public void onCreateUser(View view) {
+        // Start the create user activity
         Intent intent = new Intent(this, CreateUserActivity.class);
         startActivityForResult(intent, CREATE_USER);
     }
@@ -96,6 +118,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (data != null) {
+            // The response is from creating a user and it succeeded.
+            // Continue to the menu activity with the newly created username and password.
             if(requestCode == CREATE_USER && resultCode == Activity.RESULT_OK) {
                 startMenuActivity(
                         this,
@@ -114,12 +138,14 @@ public class LoginActivity extends AppCompatActivity {
      * @param password User's password
      */
     private void startMenuActivity(LoginActivity activity, String username, String password, boolean remember) {
+        // Set the state of the remembered user information
         if(remember) {
             userService.setRemember(username, password);
         } else {
             userService.clearRemember();
         }
 
+        // Start the menu activity passing through the user's name and password
         Intent intent = new Intent(activity, MenuActivity.class);
         intent.putExtra(USERNAME, username);
         intent.putExtra(PASSWORD, password);

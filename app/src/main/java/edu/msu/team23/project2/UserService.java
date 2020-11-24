@@ -4,21 +4,84 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.widget.EditText;
 
+/**
+ * Service class for handling and saving user credentials.
+ */
 public class UserService {
+    /**
+     * Name of the preferences file.
+     */
     private static final String PREFERENCES_FILE_NAME = "preferences";
+
+    /**
+     * Preferences key for if there is a remembered user.
+     */
     private static final String REMEMBER_KEY = "remember";
+
+    /**
+     * Preferences value for when the remember key is set.
+     */
     private static final String REMEMBER_SET = "true";
+
+    /**
+     * Preferences value for when the remember key is not set.
+     */
     private static final String REMEMBER_CLEAR = "false";
+
+    /**
+     * Preferences key for the remembered username.
+     */
     private static final String REMEMBERED_USERNAME_KEY = "rememberedUsername";
+
+    /**
+     * Preferences key for the remembered password.
+     */
     private static final String REMEMBERED_PASSWORD_KEY = "rememberedPassword";
+
+    /**
+     * Preferences value for when a username or password are empty.
+     */
     private static final String REMEMBERED_EMPTY = "";
 
+    /**
+     * Object holding the applications preferences
+     */
     private final SharedPreferences preferences;
+
+    /**
+     * Minimum length a username can be.
+     */
     private final int  minUsernameLength;
+
+    /**
+     * Maximum length a username can be.
+     */
     private final int maxUsernameLength;
+
+    /**
+     * Minimum length a password can be.
+     */
     private final int minPasswordLength;
+
+    /**
+     * Maximum length a password can be.
+     */
     private final int maxPasswordLength;
+
+    /**
+     * Formatted string for when the username is invalid.
+     * 2 places for numbers:
+     * 1 -> minimum username length
+     * 2 -> maximum username length
+     */
     private final String invalidUsernameLengthError;
+
+    /**
+     * Formatted string for when the password is invalid.
+     * 2 places for numbers:
+     * 1 -> minimum password length
+     * 2 -> maximum password length
+     */
     private final String invalidPasswordLengthError;
 
 
@@ -44,18 +107,23 @@ public class UserService {
         boolean areFieldsValid = true;
 
         if (usernameField != null && passwordField != null) {
+            // Get the strings in the username and password fields
             String username = usernameField.getText().toString();
             String password = passwordField.getText().toString();
 
+            // If the password is not in the valid range, the fields are not valid and an error is presented
             if (password.length() < minPasswordLength || password.length() > maxPasswordLength) {
                 areFieldsValid = false;
                 passwordField.setError(String.format(invalidPasswordLengthError, minPasswordLength, maxPasswordLength));
             }
+
+            //If the username is not in the valid range, the fields are not valid and an error is presented
             if (username.length() < minUsernameLength || username.length() > maxUsernameLength) {
                 areFieldsValid = false;
                 usernameField.setError(String.format(invalidUsernameLengthError, minUsernameLength, maxUsernameLength));
             }
         } else {
+            // One of the fields cannot be found, the fields are not valid
             areFieldsValid = false;
         }
 

@@ -13,11 +13,28 @@ import edu.msu.team23.project2.cloud.Cloud;
 import edu.msu.team23.project2.cloud.DatabaseConstants;
 import edu.msu.team23.project2.cloud.models.CheckersResult;
 
+/**
+ * Class for handling creating a new user.
+ */
 public class CreateUserActivity extends AppCompatActivity {
+    /**
+     * Key for the new user's name.
+     */
     public static final String USERNAME = "CreateUserActivity.username";
+
+    /**
+     * Key for the new user's password.
+     */
     public static final String PASSWORD = "CreateUserActivity.password";
+
+    /**
+     * Key for if the new user's information should be remembered.
+     */
     public static final String REMEMBER = "CreateUserActivity.remember";
 
+    /**
+     * Service for handling and saving the user's credentials.
+     */
     private UserService userService;
 
     @Override
