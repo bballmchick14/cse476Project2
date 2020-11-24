@@ -54,9 +54,10 @@ public class CreateUserActivity extends AppCompatActivity {
     public void onCreateUser(View view) {
         final EditText usernameField = findViewById(R.id.loginUsername);
         final EditText passwordField = findViewById(R.id.loginPassword);
+        final EditText passwordConfirmField = findViewById(R.id.loginPasswordConfirm);
 
         // Only attempt a login if the input is valid
-        if (userService.areFieldsValid(usernameField, passwordField)) {
+        if (userService.areFieldsValid(usernameField, passwordField, passwordConfirmField)) {
             // Activity thread is in
             final CreateUserActivity activity = this;
 

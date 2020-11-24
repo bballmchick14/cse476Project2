@@ -61,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
         final EditText passwordField = getPasswordField();
 
         // Only attempt a login if the input is valid
-        if (userService.areFieldsValid(usernameField, passwordField)) {
+        if (userService.areFieldsValid(usernameField, passwordField, null)) {
             // Activity thread is in
             final LoginActivity activity = this;
 

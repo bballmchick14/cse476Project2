@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:baselineAligned="false"
     android:paddingStart="25dp"
-    android:paddingEnd="5dp"
+    android:paddingEnd="25dp"
     tools:context="edu.msu.team23.project2.LoginActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,7 +21,7 @@
             android:id="@+id/createUserActivityTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/game_title"
+            android:text="@string/create_user_title"
             android:textSize="36sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,17 +45,33 @@
         android:layout_height="match_parent"
         android:layout_weight="1">
 
-        <TextView
-            android:id="@+id/createUserTitle"
+        <LinearLayout
+            android:id="@+id/passwordConfirmEntryLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/create_user_title"
-            android:textSize="30sp"
-            app:layout_constraintBottom_toTopOf="@+id/usernameEntryLayout"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/createRememberCheckbox"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/passwordEntryLayout">
+
+            <TextView
+                android:id="@+id/loginPasswordConfrimLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:labelFor="@id/loginPasswordConfirm"
+                android:text="@string/user_confirm_password_label" />
+
+            <EditText
+                android:id="@+id/loginPasswordConfirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:inputType="textPassword" />
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/usernameEntryLayout"
@@ -66,7 +82,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/createUserTitle">
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/loginUsernameLabel"
@@ -89,7 +105,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/createRememberCheckbox"
+            app:layout_constraintBottom_toTopOf="@+id/passwordConfirmEntryLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -130,6 +146,6 @@
             android:text="@string/remember_label"
             app:layout_constraintBottom_toTopOf="@+id/createUserButton"
             app:layout_constraintStart_toStartOf="@+id/passwordEntryLayout"
-            app:layout_constraintTop_toBottomOf="@+id/passwordEntryLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/passwordConfirmEntryLayout" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

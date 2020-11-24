@@ -13,7 +13,7 @@
         android:id="@+id/createUserActivityTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/game_title"
+        android:text="@string/create_user_title"
         android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/checkersPieceImage"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,24 +26,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/white_piece_image_description"
-        app:layout_constraintBottom_toTopOf="@+id/createUserTitle"
+        app:layout_constraintBottom_toTopOf="@+id/usernameEntryLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/createUserActivityTitle"
         app:srcCompat="@drawable/white_man" />
-
-    <TextView
-        android:id="@+id/createUserTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/create_user_title"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/usernameEntryLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkersPieceImage" />
 
     <LinearLayout
         android:id="@+id/usernameEntryLayout"
@@ -54,7 +42,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createUserTitle">
+        app:layout_constraintTop_toBottomOf="@+id/checkersPieceImage">
 
         <TextView
             android:id="@+id/loginUsernameLabel"
@@ -77,7 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/createRememberCheckbox"
+        app:layout_constraintBottom_toTopOf="@+id/passwordConfirmEntryLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -99,6 +87,43 @@
             android:inputType="textPassword" />
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/passwordConfirmEntryLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/createRememberCheckbox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordEntryLayout">
+
+        <TextView
+            android:id="@+id/loginPasswordConfirmLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:labelFor="@id/loginPasswordConfirm"
+            android:text="@string/user_confirm_password_label" />
+
+        <EditText
+            android:id="@+id/loginPasswordConfirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:importantForAutofill="no"
+            android:inputType="textPassword" />
+    </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/createRememberCheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/remember_label"
+        app:layout_constraintBottom_toTopOf="@+id/createUserButton"
+        app:layout_constraintStart_toStartOf="@+id/passwordEntryLayout"
+        app:layout_constraintTop_toBottomOf="@+id/passwordConfirmEntryLayout" />
+
     <Button
         android:id="@+id/createUserButton"
         android:layout_width="wrap_content"
@@ -110,14 +135,5 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/createRememberCheckbox" />
-
-    <CheckBox
-        android:id="@+id/createRememberCheckbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/remember_label"
-        app:layout_constraintBottom_toTopOf="@+id/createUserButton"
-        app:layout_constraintStart_toStartOf="@+id/passwordEntryLayout"
-        app:layout_constraintTop_toBottomOf="@+id/passwordEntryLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

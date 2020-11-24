@@ -84,6 +84,11 @@ public class UserService {
      */
     private final String invalidPasswordLengthError;
 
+    /**
+     * String for when the confirm password is not the same as the password.
+     */
+    private final String invalidConfirmPasswordError;
+
 
     /**
      * Constructor.
@@ -97,23 +102,26 @@ public class UserService {
         this.maxPasswordLength = maxPasswordLength;
         invalidUsernameLengthError = activity.getResources().getString(R.string.invalid_username_length_error);
         invalidPasswordLengthError = activity.getResources().getString(R.string.invalid_password_length_error);
+        invalidConfirmPasswordError = activity.getResources().getString(R.string.invalid_conform_password_error);
     }
 
     /**
      * Are the username and password fields in the correct format?
      * @return Are the username and password fields in the correct format?
      */
-    public boolean areFieldsValid(EditText usernameField, EditText passwordField) {
+    public boolean areFieldsValid(EditText usernameField, EditText passwordField, EditText confirmPasswordField) {
         boolean areFieldsValid = true;
 
         if (usernameField != null && passwordField != null) {
             // Clear previous errors
             usernameField.setError(null);
             passwordField.setError(null);
+            passwordField.setError(null);
 
             // Get the strings in the username and password fields
             String username = usernameField.getText().toString();
             String password = passwordField.getText().toString();
+            String confirmPassword = confirmPasswordField != null ? confirmPasswordField.getText().toString() : null;
 
             // If the password is not in the valid range, the fields are not valid and an error is presented
             if (password.length() < minPasswordLength || password.length() > maxPasswordLength) {
@@ -121,10 +129,16 @@ public class UserService {
                 passwordField.setError(String.format(invalidPasswordLengthError, minPasswordLength, maxPasswordLength));
             }
 
-            //If the username is not in the valid range, the fields are not valid and an error is presented
+            // If the username is not in the valid range, the fields are not valid and an error is presented
             if (username.length() < minUsernameLength || username.length() > maxUsernameLength) {
                 areFieldsValid = false;
                 usernameField.setError(String.format(invalidUsernameLengthError, minUsernameLength, maxUsernameLength));
+            }
+
+            // If the password confirmation is not the same as the password, the fields are not valid and an error is presented
+            if (confirmPasswordField != null && !confirmPassword.equals(password)) {
+                areFieldsValid = false;
+                confirmPasswordField.setError(invalidConfirmPasswordError);
             }
         } else {
             // One of the fields cannot be found, the fields are not valid
