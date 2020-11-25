@@ -6,7 +6,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.EditText;
 
 import edu.msu.team23.project2.cloud.Cloud;
@@ -21,16 +20,6 @@ public class CreateUserActivity extends AppCompatActivity {
      * Key for the new user's name.
      */
     public static final String USERNAME = "CreateUserActivity.username";
-
-    /**
-     * Key for the new user's password.
-     */
-    public static final String PASSWORD = "CreateUserActivity.password";
-
-    /**
-     * Key for if the new user's information should be remembered.
-     */
-    public static final String REMEMBER = "CreateUserActivity.remember";
 
     /**
      * Service for handling and saving the user's credentials.
@@ -75,8 +64,6 @@ public class CreateUserActivity extends AppCompatActivity {
                             public void run() {
                                 Intent result = new Intent();
                                 result.putExtra(USERNAME, usernameField.getText().toString());
-                                result.putExtra(PASSWORD, passwordField.getText().toString());
-                                result.putExtra(REMEMBER, getRememberCheckBox().isChecked());
                                 setResult(Activity.RESULT_OK, result);
                                 finish();
                             }
@@ -95,13 +82,5 @@ public class CreateUserActivity extends AppCompatActivity {
                 }
             }).start();
         }
-    }
-
-    /**
-     * Get the remember check box.
-     * @return The remember check box
-     */
-    private CheckBox getRememberCheckBox() {
-        return findViewById(R.id.createRememberCheckbox);
     }
 }

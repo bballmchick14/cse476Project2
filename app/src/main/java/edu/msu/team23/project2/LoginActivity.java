@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import edu.msu.team23.project2.cloud.Cloud;
 import edu.msu.team23.project2.cloud.DatabaseConstants;
@@ -116,13 +117,8 @@ public class LoginActivity extends AppCompatActivity {
             // The response is from creating a user and it succeeded.
             // Continue to the menu activity with the newly created username and password.
             if(requestCode == CREATE_USER && resultCode == Activity.RESULT_OK) {
-                startMenuActivity(
-                        this,
-                        data.getStringExtra(CreateUserActivity.USERNAME),
-                        data.getStringExtra(CreateUserActivity.PASSWORD),
-                        data.getBooleanExtra(CreateUserActivity.REMEMBER,
-                        false)
-                );
+                // Notify the user that the new user has been created
+                Toast.makeText(this, String.format(getString(R.string.user_created), data.getStringExtra(CreateUserActivity.USERNAME)), Toast.LENGTH_SHORT).show();
             }
         }
     }

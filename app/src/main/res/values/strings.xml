@@ -41,4 +41,5 @@
     <string name="feature_not_implemented">This feature has not been implemented yet!</string>
     <string name="invalid_conform_password_error">The passwords are not the same!</string>
     <string name="user_confirm_password_label">Confirm\nPassword:</string>
+    <string name="user_created">User %s was created!</string>
 </resources>

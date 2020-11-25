@@ -50,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/createRememberCheckbox"
+            app:layout_constraintBottom_toTopOf="@+id/createUserButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -137,15 +137,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/createRememberCheckbox" />
-
-        <CheckBox
-            android:id="@+id/createRememberCheckbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/remember_label"
-            app:layout_constraintBottom_toTopOf="@+id/createUserButton"
-            app:layout_constraintStart_toStartOf="@+id/passwordEntryLayout"
             app:layout_constraintTop_toBottomOf="@+id/passwordConfirmEntryLayout" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
