@@ -126,8 +126,10 @@ public class LoginActivity extends AppCompatActivity {
         if (data != null) {
             // The response is from creating a user and it succeeded.
             // Continue to the menu activity with the newly created username and password.
-            if(requestCode == CREATE_USER && resultCode == Activity.RESULT_OK) {
+            if(requestCode == CREATE_USER) {
                 // Notify the user that the new user has been created
+                getUsernameField().setError(null);
+                getPasswordField().setError(null);
                 Toast.makeText(this, String.format(getString(R.string.user_created), data.getStringExtra(CreateUserActivity.USERNAME)), Toast.LENGTH_SHORT).show();
             }
         }
