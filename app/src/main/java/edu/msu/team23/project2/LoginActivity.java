@@ -61,6 +61,13 @@ public class LoginActivity extends AppCompatActivity {
         final EditText usernameField = getUsernameField();
         final EditText passwordField = getPasswordField();
 
+        // Set the state of the remembered user information
+        if(getRememberCheckBox().isChecked()) {
+            userService.setRemember(usernameField.getText().toString(), passwordField.getText().toString());
+        } else {
+            userService.clearRemember();
+        }
+
         // Only attempt a login if the input is valid
         if (userService.areFieldsValid(usernameField, passwordField, null)) {
             // Activity thread is in
@@ -79,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                startMenuActivity(activity, usernameField.getText().toString(), passwordField.getText().toString(), getRememberCheckBox().isChecked());
+                                startMenuActivity(activity, usernameField.getText().toString(), passwordField.getText().toString());
                             }
                         });
                     } else {
@@ -132,14 +139,7 @@ public class LoginActivity extends AppCompatActivity {
      * @param username User's username
      * @param password User's password
      */
-    private void startMenuActivity(LoginActivity activity, String username, String password, boolean remember) {
-        // Set the state of the remembered user information
-        if(remember) {
-            userService.setRemember(username, password);
-        } else {
-            userService.clearRemember();
-        }
-
+    private void startMenuActivity(LoginActivity activity, String username, String password) {
         // Remove errors from the errors from the EditTexts on the login activity
         getUsernameField().setError(null);
         getPasswordField().setError(null);
