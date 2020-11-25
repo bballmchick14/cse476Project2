@@ -42,4 +42,5 @@
     <string name="invalid_conform_password_error">The passwords are not the same!</string>
     <string name="user_confirm_password_label">Confirm\nPassword:</string>
     <string name="user_created">User %s was created!</string>
+    <string name="server_connection_error">Could not connect to the server!</string>
 </resources>

@@ -87,7 +87,10 @@ public class LoginActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                if (result != null && result.getMessage().equals(Cloud.PASSWORD_ERROR)) {
+                                if (result == null) {
+                                    Toast.makeText(activity, R.string.server_connection_error, Toast.LENGTH_SHORT).show();
+                                }
+                                else if (result.getMessage().equals(Cloud.PASSWORD_ERROR)) {
                                     passwordField.setError(getResources().getString(R.string.password_error));
                                 } else {
                                     usernameField.setError(getResources().getString(R.string.nonexistent_user_error));
